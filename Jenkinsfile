@@ -2,18 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Run Frontend') {
-            agent {
-                docker {
-                    image 'node:18' 
-                    args '-u root' 
-                }
-            }
-            steps {
-                echo 'Executing yarn for frontend...'
-                sh 'yarn install'
-            }
-        }
+
 
         stage('Run Backend') {
             steps {
