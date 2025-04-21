@@ -3,17 +3,23 @@ pipeline {
 
     stages {
         stage('Run Frontend') {
+            agent {
+                docker {
+                    image 'node:18' 
+                    args '-u root' 
+                }
+            }
             steps {
                 echo 'Executing yarn for frontend...'
-                sh 'yarn install' 
+                sh 'yarn install'
             }
         }
 
         stage('Run Backend') {
             steps {
                 echo 'Executing Gradle for backend...'
-                withGradle { 
-                    sh './gradlew -v' 
+                withGradle {
+                    sh './gradlew -v'
                 }
             }
         }
