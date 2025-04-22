@@ -1,16 +1,23 @@
 pipeline {
-    agent any
-
-    stages {
-
-
-        stage('Run Backend') {
-            steps {
-                echo 'Executing Gradle for backend...'
-                withGradle {
-                    sh './gradlew -v'
-                }
-            }
-        }
-    }
-}
+     agent any
+ 
+ 
+     stages {
+         stage('Build') {
+             steps {
+                 echo 'Building the application..'
+             }
+         }
+         stage('Test') {
+             steps {
+                 echo 'Testing the application..'
+             }
+         }
+         stage('Deploy') {
+             steps {
+                 echo 'Deploying the application..'
+             }
+         }
+       
+     }
+ }
